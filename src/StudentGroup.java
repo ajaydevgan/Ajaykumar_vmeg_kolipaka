@@ -34,19 +34,28 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public void setStudents(Student[] students) {
 		// Add your implementation here
-		this.students=students;
+		if(students == null) 
+			throw new IllegalArgumentException();
+		else
+			this.students=students;
 	}
 
 	@Override
 	public Student getStudent(int index) {
 		// Add your implementation here
-		return this.students[index];
+		if(index<0 && index>=this.students.length)
+			throw new IllegalArgumentException();
+		else
+			return this.students[index];
 	}
 
 	@Override
 	public void setStudent(Student student, int index) {
 		// Add your implementation here
-		this.students[index]=student;
+		if((student==null) || (index<0 && index>=this.students.length))
+			throw new IllegalArgumentException();
+		else
+			this.students[index]=student;
 	}
 
 	@Override
@@ -66,12 +75,15 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public void add(Student student, int index) {
 		// Add your implementation here
-		this.students[index]=student;
+		LinkedList<Student> l=new LinkedList<Student>(Arrays.asList(this.students));
+		l.add(index,student);
 	}
 
 	@Override
 	public void remove(int index) {
 		// Add your implementation here
+		LinkedList<Student> l=new LinkedList<Student>(Arrays.asList(this.students));
+		l.remove(index);
 	}
 
 	@Override
