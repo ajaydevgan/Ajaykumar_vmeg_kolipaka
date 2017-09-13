@@ -1,5 +1,6 @@
 import java.util.Date;
 import java.util.*;
+import java.text.*;
 /**
  * A fix-sized array of students
  * array length should always be equal to the number of stored elements
@@ -249,7 +250,18 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public int getCurrentAgeByDate(int indexOfStudent) {
 		// Add your implementation here
-		return 0;
+		 if(indexOfStudent == 0)
+			throw new IllegalArgumentException();
+		else{
+			Date d=new Date();	
+			SimpleDateFormat sd=new SimpleDateFormat("yyyy-MM-dd");
+			String date=sd.format(d);
+			date=date.substring(0,3);
+			Date tempdate=this.students[indexOfStudent].getBirthDate();
+			sd.format(tempdate);
+			String date1=sd.format(tempdate);
+			return (Integer.parseInt(date)-Integer.parseInt(date1));
+		}
 	}
 
 	@Override
