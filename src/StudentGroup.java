@@ -230,7 +230,20 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public Student[] getNearBirthDate(Date date, int days) {
 		// Add your implementation here
-		return null;
+		Date d1=date;
+		if(date == null)
+	 		throw new IllegalArgumentException();
+		else{
+			Calendar cal =Calendar.getInstance();
+		   	cal.add(Calendar.DATE, days);
+           		date = cal.getTime();
+			LinkedList<Student> l = new LinkedList<Student>(Arrays.asList(this.students));
+			for(Student s :l){
+				if(s.getBirthDate().after(d1) && s.getBirthDate().before(date))
+					l.add(s);				
+			}
+			return l.toArray(new Student[l.size()]);
+		}
 	}
 
 	@Override
