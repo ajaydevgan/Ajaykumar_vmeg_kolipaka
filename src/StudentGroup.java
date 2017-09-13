@@ -293,6 +293,11 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public Student getNextStudent(Student student) {
 		// Add your implementation here
-		return null;
+		this.bubbleSort();
+		   int i;
+		   for(i = 0; i < this.students.length; i++)
+			   if(this.students[i].equals(student))
+				 break;
+		   return this.students[i+1];
 	}
 }
