@@ -198,19 +198,33 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public Student[] getByBirthDate(Date date) {
 		// Add your implementation here
-		LinkedList<Student> l = new LinkedList<Student>(Arrays.asList(this.students));
-		   for(Student s :l)
-		   {
-		       if(s.getBirthDate().compareTo(date) == 0)
-				   l.add(s);
-		   }
-		   return  l.toArray(new Student[l.size()]);
+		if(date==null)
+			throw new IllegalArgumentException();
+		else{
+			LinkedList<Student> l = new LinkedList<Student>(Arrays.asList(this.students));
+			   for(Student s :l)
+			   {
+			       if(s.getBirthDate().compareTo(date) == 0)
+					   l.add(s);
+			   }
+			   return  l.toArray(new Student[l.size()]);
+		}
 	}
 
 	@Override
 	public Student[] getBetweenBirthDates(Date firstDate, Date lastDate) {
 		// Add your implementation here
-		return null;
+		if(firstDate == null || lastDate == null)
+	 		throw new IllegalArgumentException();
+		else{
+			LinkedList<Student> l = new LinkedList<Student>(Arrays.asList(this.students));
+			   for(Student s :l)
+			   {
+				if(s.getBirthDate().after(firstDate) && s.getBirthDate().before(lastDate))
+					l.add(s);				
+			   }
+			return l.toArray(new Student[l.size()]);
+		}
 	}
 
 	@Override
