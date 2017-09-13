@@ -108,23 +108,58 @@ public class StudentGroup implements StudentArrayOperation {
 		if(student==null)
 			throw new IllegalArgumentException();
 		else{
-
+			int count=0;
+			LinkedList<Student> l=new LinkedList<Student>(Arrays.asList(this.students));
+			for(Student x:l){
+				if(x.equals(student)){
+					l.remove(x);
+					count++;
+				}
+			}
+			if(count==0)
+				throw new IllegalArgumentException("Student not exist");
 		}
 	}
 
 	@Override
 	public void removeFromIndex(int index) {
 		// Add your implementation here
+		if(index<0 && index>=this.students.length)
+			throw new IllegalArgumentException();
+		else{
+			LinkedList<Student> l=new LinkedList<Student>(Arrays.asList(this.students));
+			l.remove(index);
+		}	
 	}
 
 	@Override
 	public void removeFromElement(Student student) {
 		// Add your implementation here
+		if(student==null)
+			throw new IllegalArgumentException();
+		else{
+			int index=-1;
+			for(int i=0;i<this.students.length;i++){
+				if(this.students[i].equals(student)){
+					index=i;
+					break;
+				}
+			}
+			LinkedList<Student> l=new LinkedList<Student>(Arrays.asList(this.students));
+			l.remove(index+1);
+		}
 	}
 
 	@Override
 	public void removeToIndex(int index) {
 		// Add your implementation here
+		if(index<0 && index>=this.students.length)
+			throw new IllegalArgumentException();
+		else{
+			LinkedList<Student> l=new LinkedList<Student>(Arrays.asList(this.students));
+			for(int i=0;i<index;i++)
+				l.remove(i);
+		}
 	}
 
 	@Override
