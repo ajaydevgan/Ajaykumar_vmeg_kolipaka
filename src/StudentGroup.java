@@ -202,7 +202,7 @@ public class StudentGroup implements StudentArrayOperation {
 		if(date==null)
 			throw new IllegalArgumentException();
 		else{
-			LinkedList<Student> l = new LinkedList<Student>(Arrays.asList(this.students));
+			LinkedList<Student> l = new LinkedList<Student>();
 			   for(Student s :l)
 			   {
 			       if(s.getBirthDate().compareTo(date) == 0)
@@ -218,7 +218,7 @@ public class StudentGroup implements StudentArrayOperation {
 		if(firstDate == null || lastDate == null)
 	 		throw new IllegalArgumentException();
 		else{
-			LinkedList<Student> l = new LinkedList<Student>(Arrays.asList(this.students));
+			LinkedList<Student> l = new LinkedList<Student>();
 			   for(Student s :l)
 			   {
 				if(s.getBirthDate().after(firstDate) && s.getBirthDate().before(lastDate))
@@ -238,7 +238,7 @@ public class StudentGroup implements StudentArrayOperation {
 			Calendar cal =Calendar.getInstance();
 		   	cal.add(Calendar.DATE, days);
            		date = cal.getTime();
-			LinkedList<Student> l = new LinkedList<Student>(Arrays.asList(this.students));
+			LinkedList<Student> l = new LinkedList<Student>();
 			for(Student s :l){
 				if(s.getBirthDate().after(d1) && s.getBirthDate().before(date))
 					l.add(s);				
