@@ -160,6 +160,7 @@ public class StudentGroup implements StudentArrayOperation {
 			LinkedList<Student> l=new LinkedList<Student>(Arrays.asList(this.students));
 			for(int i=0;i<index;i++)
 				l.remove(i);
+			this.students=l.toArray(new Student[l.size()]);
 		}
 	}
 
@@ -179,6 +180,7 @@ public class StudentGroup implements StudentArrayOperation {
 			LinkedList<Student> l=new LinkedList<Student>(Arrays.asList(this.students));
 			for(int i=0;i<index;i++)
 				l.remove(i);
+			this.students=l.toArray(new Student[l.size()]);
 		}
 	}
 
