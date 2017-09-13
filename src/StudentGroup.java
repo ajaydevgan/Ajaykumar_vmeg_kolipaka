@@ -43,7 +43,7 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public Student getStudent(int index) {
 		// Add your implementation here
-		if(index<0 && index>=this.students.length)
+		if(index<0 || index>=this.students.length)
 			throw new IllegalArgumentException();
 		else
 			return this.students[index];
@@ -52,7 +52,7 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public void setStudent(Student student, int index) {
 		// Add your implementation here
-		if((student==null) || (index<0 && index>=this.students.length))
+		if((student==null) || (index<0 || index>=this.students.length))
 			throw new IllegalArgumentException();
 		else
 			this.students[index]=student;
@@ -83,7 +83,7 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public void add(Student student, int index) {
 		// Add your implementation here
-		if((student==null) || (index<0 && index>=this.students.length))
+		if((student==null) || (index<0 || index>=this.students.length))
 			throw new IllegalArgumentException();
 		else{
 			LinkedList<Student> l=new LinkedList<Student>(Arrays.asList(this.students));
@@ -94,7 +94,7 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public void remove(int index) {
 		// Add your implementation here
-		if(index<0 && index>=this.students.length)
+		if(index<0 || index>=this.students.length)
 			throw new IllegalArgumentException();
 		else{
 			LinkedList<Student> l=new LinkedList<Student>(Arrays.asList(this.students));
@@ -124,7 +124,7 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public void removeFromIndex(int index) {
 		// Add your implementation here
-		if(index<0 && index>=this.students.length)
+		if(index<0 || index>=this.students.length)
 			throw new IllegalArgumentException();
 		else{
 			LinkedList<Student> l=new LinkedList<Student>(Arrays.asList(this.students));
@@ -153,7 +153,7 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public void removeToIndex(int index) {
 		// Add your implementation here
-		if(index<0 && index>=this.students.length)
+		if(index<0 || index>=this.students.length)
 			throw new IllegalArgumentException();
 		else{
 			LinkedList<Student> l=new LinkedList<Student>(Arrays.asList(this.students));
@@ -165,17 +165,46 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public void removeToElement(Student student) {
 		// Add your implementation here
+		if(student==null)
+			throw new IllegalArgumentException();
+		else{
+			int index=-1;
+			for(int i=0;i<this.students.length;i++){
+				if(this.students[i].equals(student)){
+					index=i;
+					break;
+				}
+			}
+			LinkedList<Student> l=new LinkedList<Student>(Arrays.asList(this.students));
+			for(int i=0;i<index;i++)
+				l.remove(i);
+		}
 	}
 
 	@Override
 	public void bubbleSort() {
 		// Add your implementation here
+		for(int i = 0; i < this.students.length; i++){
+	            for(int j = 0; j < this.students.length-i-1; j++){
+                  	 if(this.students[j].getId() > this.students[j+1].getId()){
+				Student temp = this.students[j];
+				this.students[j] = this.students[j+1];
+				this.students[j+1] = temp;	   
+		 	 }
+		  }	   
+	  	}
 	}
 
 	@Override
 	public Student[] getByBirthDate(Date date) {
 		// Add your implementation here
-		return null;
+		LinkedList<Student> l = new LinkedList<Student>(Arrays.asList(this.students));
+		   for(Student s :l)
+		   {
+		       if(s.getBirthDate().compareTo(date) == 0)
+				   l.add(s);
+		   }
+		   return  l.toArray(new Student[l.size()]);
 	}
 
 	@Override
