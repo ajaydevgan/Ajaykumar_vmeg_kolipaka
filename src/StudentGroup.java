@@ -67,6 +67,7 @@ public class StudentGroup implements StudentArrayOperation {
 		else{
 			LinkedList<Student> l=new LinkedList<Student>(Arrays.asList(this.students));
 			l.addFirst(student);
+			this.students=l.toArray(new Student[l.size()]);
 		}
 	}
 
@@ -78,6 +79,7 @@ public class StudentGroup implements StudentArrayOperation {
 		else{
 			LinkedList<Student> l=new LinkedList<Student>(Arrays.asList(this.students));
 			l.addLast(student);
+			this.students=l.toArray(new Student[l.size()]);
 		}
 	}
 
@@ -89,6 +91,7 @@ public class StudentGroup implements StudentArrayOperation {
 		else{
 			LinkedList<Student> l=new LinkedList<Student>(Arrays.asList(this.students));
 			l.add(index,student);
+			this.students=l.toArray(new Student[l.size()]);
 		}
 	}
 
@@ -100,6 +103,7 @@ public class StudentGroup implements StudentArrayOperation {
 		else{
 			LinkedList<Student> l=new LinkedList<Student>(Arrays.asList(this.students));
 			l.remove(index);
+			this.students=l.toArray(new Student[l.size()]);
 		}
 	}
 
@@ -119,6 +123,8 @@ public class StudentGroup implements StudentArrayOperation {
 			}
 			if(count==0)
 				throw new IllegalArgumentException("Student not exist");
+			else
+				this.students=l.toArray(new Student[l.size()]);
 		}
 	}
 
@@ -130,6 +136,7 @@ public class StudentGroup implements StudentArrayOperation {
 		else{
 			LinkedList<Student> l=new LinkedList<Student>(Arrays.asList(this.students));
 			l.remove(index);
+			this.students=l.toArray(new Student[l.size()]);
 		}	
 	}
 
@@ -148,6 +155,7 @@ public class StudentGroup implements StudentArrayOperation {
 			}
 			LinkedList<Student> l=new LinkedList<Student>(Arrays.asList(this.students));
 			l.remove(index+1);
+			this.students=l.toArray(new Student[l.size()]);
 		}
 	}
 
