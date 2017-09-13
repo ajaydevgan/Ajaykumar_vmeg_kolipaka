@@ -61,34 +61,55 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public void addFirst(Student student) {
 		// Add your implementation here
-		LinkedList<Student> l=new LinkedList<Student>(Arrays.asList(this.students));
-		l.addFirst(student);
+		if(students == null) 
+			throw new IllegalArgumentException();
+		else{
+			LinkedList<Student> l=new LinkedList<Student>(Arrays.asList(this.students));
+			l.addFirst(student);
+		}
 	}
 
 	@Override
 	public void addLast(Student student) {
 		// Add your implementation here
-		LinkedList<Student> l=new LinkedList<Student>(Arrays.asList(this.students));
-		l.addLast(student);
+		if(students == null) 
+			throw new IllegalArgumentException();
+		else{
+			LinkedList<Student> l=new LinkedList<Student>(Arrays.asList(this.students));
+			l.addLast(student);
+		}
 	}
 
 	@Override
 	public void add(Student student, int index) {
 		// Add your implementation here
-		LinkedList<Student> l=new LinkedList<Student>(Arrays.asList(this.students));
-		l.add(index,student);
+		if((student==null) || (index<0 && index>=this.students.length))
+			throw new IllegalArgumentException();
+		else{
+			LinkedList<Student> l=new LinkedList<Student>(Arrays.asList(this.students));
+			l.add(index,student);
+		}
 	}
 
 	@Override
 	public void remove(int index) {
 		// Add your implementation here
-		LinkedList<Student> l=new LinkedList<Student>(Arrays.asList(this.students));
-		l.remove(index);
+		if(index<0 && index>=this.students.length)
+			throw new IllegalArgumentException();
+		else{
+			LinkedList<Student> l=new LinkedList<Student>(Arrays.asList(this.students));
+			l.remove(index);
+		}
 	}
 
 	@Override
 	public void remove(Student student) {
 		// Add your implementation here
+		if(student==null)
+			throw new IllegalArgumentException();
+		else{
+
+		}
 	}
 
 	@Override
